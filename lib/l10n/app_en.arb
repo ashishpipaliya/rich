@@ -1,0 +1,44 @@
+{
+    "appTitle": "SpaceX Dashboard",
+    "searchHint": "Search experimental missions...",
+    "initializingControl": "Initializing Mission Control...",
+    "loading": "Loading...",
+    "telemetryError": "Telemetry Error: {message}",
+    "@telemetryError": {
+        "placeholders": {
+            "message": {
+                "type": "String"
+            }
+        }
+    },
+    "noMissionsFound": "No missions match coordinates",
+    "launchHistory": "Launch History",
+    "flightNumber": "Flight #{number}",
+    "@flightNumber": {
+        "placeholders": {
+            "number": {
+                "type": "int"
+            }
+        }
+    },
+    "success": "Success",
+    "failure": "Failure",
+    "retry": "Retry Fetching",
+    "missionSummary": "Mission Summary",
+    "noDetails": "Historical records for this mission are classified or unavailable.",
+    "launchDate": "Launch Date",
+    "launchStatus": "Launch Status",
+    "liveTelemetry": "LIVE TELEMETRY",
+    "successfulDeployment": "Successful Deployment",
+    "connectionLost": "Connection lost: {message}",
+    "@connectionLost": {
+        "placeholders": {
+            "message": {
+                "type": "String"
+            }
+        }
+    },
+    "reconnect": "Reconnect",
+    "orbit": "ORBIT",
+    "latestLaunch": "Latest Launch"
+}
