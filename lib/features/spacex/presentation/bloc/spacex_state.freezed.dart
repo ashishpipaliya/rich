@@ -14,7 +14,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$SpaceXState {
 
- SpaceXStatus get historyStatus; SpaceXStatus get latestStatus; List<Launch> get allLaunches; List<Launch> get filteredLaunches; Launch? get latestLaunch; String get searchQuery; String? get errorMessage;
+ List<Launch> get allLaunches; List<Launch> get filteredLaunches; Launch? get latestLaunch; String get searchQuery; String? get errorMessage;
 /// Create a copy of SpaceXState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -25,16 +25,16 @@ $SpaceXStateCopyWith<SpaceXState> get copyWith => _$SpaceXStateCopyWithImpl<Spac
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is SpaceXState&&(identical(other.historyStatus, historyStatus) || other.historyStatus == historyStatus)&&(identical(other.latestStatus, latestStatus) || other.latestStatus == latestStatus)&&const DeepCollectionEquality().equals(other.allLaunches, allLaunches)&&const DeepCollectionEquality().equals(other.filteredLaunches, filteredLaunches)&&(identical(other.latestLaunch, latestLaunch) || other.latestLaunch == latestLaunch)&&(identical(other.searchQuery, searchQuery) || other.searchQuery == searchQuery)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is SpaceXState&&const DeepCollectionEquality().equals(other.allLaunches, allLaunches)&&const DeepCollectionEquality().equals(other.filteredLaunches, filteredLaunches)&&(identical(other.latestLaunch, latestLaunch) || other.latestLaunch == latestLaunch)&&(identical(other.searchQuery, searchQuery) || other.searchQuery == searchQuery)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,historyStatus,latestStatus,const DeepCollectionEquality().hash(allLaunches),const DeepCollectionEquality().hash(filteredLaunches),latestLaunch,searchQuery,errorMessage);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(allLaunches),const DeepCollectionEquality().hash(filteredLaunches),latestLaunch,searchQuery,errorMessage);
 
 @override
 String toString() {
-  return 'SpaceXState(historyStatus: $historyStatus, latestStatus: $latestStatus, allLaunches: $allLaunches, filteredLaunches: $filteredLaunches, latestLaunch: $latestLaunch, searchQuery: $searchQuery, errorMessage: $errorMessage)';
+  return 'SpaceXState(allLaunches: $allLaunches, filteredLaunches: $filteredLaunches, latestLaunch: $latestLaunch, searchQuery: $searchQuery, errorMessage: $errorMessage)';
 }
 
 
@@ -45,7 +45,7 @@ abstract mixin class $SpaceXStateCopyWith<$Res>  {
   factory $SpaceXStateCopyWith(SpaceXState value, $Res Function(SpaceXState) _then) = _$SpaceXStateCopyWithImpl;
 @useResult
 $Res call({
- SpaceXStatus historyStatus, SpaceXStatus latestStatus, List<Launch> allLaunches, List<Launch> filteredLaunches, Launch? latestLaunch, String searchQuery, String? errorMessage
+ List<Launch> allLaunches, List<Launch> filteredLaunches, Launch? latestLaunch, String searchQuery, String? errorMessage
 });
 
 
@@ -62,11 +62,9 @@ class _$SpaceXStateCopyWithImpl<$Res>
 
 /// Create a copy of SpaceXState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? historyStatus = null,Object? latestStatus = null,Object? allLaunches = null,Object? filteredLaunches = null,Object? latestLaunch = freezed,Object? searchQuery = null,Object? errorMessage = freezed,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? allLaunches = null,Object? filteredLaunches = null,Object? latestLaunch = freezed,Object? searchQuery = null,Object? errorMessage = freezed,}) {
   return _then(_self.copyWith(
-historyStatus: null == historyStatus ? _self.historyStatus : historyStatus // ignore: cast_nullable_to_non_nullable
-as SpaceXStatus,latestStatus: null == latestStatus ? _self.latestStatus : latestStatus // ignore: cast_nullable_to_non_nullable
-as SpaceXStatus,allLaunches: null == allLaunches ? _self.allLaunches : allLaunches // ignore: cast_nullable_to_non_nullable
+allLaunches: null == allLaunches ? _self.allLaunches : allLaunches // ignore: cast_nullable_to_non_nullable
 as List<Launch>,filteredLaunches: null == filteredLaunches ? _self.filteredLaunches : filteredLaunches // ignore: cast_nullable_to_non_nullable
 as List<Launch>,latestLaunch: freezed == latestLaunch ? _self.latestLaunch : latestLaunch // ignore: cast_nullable_to_non_nullable
 as Launch?,searchQuery: null == searchQuery ? _self.searchQuery : searchQuery // ignore: cast_nullable_to_non_nullable
@@ -165,10 +163,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( SpaceXStatus historyStatus,  SpaceXStatus latestStatus,  List<Launch> allLaunches,  List<Launch> filteredLaunches,  Launch? latestLaunch,  String searchQuery,  String? errorMessage)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<Launch> allLaunches,  List<Launch> filteredLaunches,  Launch? latestLaunch,  String searchQuery,  String? errorMessage)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _SpaceXState() when $default != null:
-return $default(_that.historyStatus,_that.latestStatus,_that.allLaunches,_that.filteredLaunches,_that.latestLaunch,_that.searchQuery,_that.errorMessage);case _:
+return $default(_that.allLaunches,_that.filteredLaunches,_that.latestLaunch,_that.searchQuery,_that.errorMessage);case _:
   return orElse();
 
 }
@@ -186,10 +184,10 @@ return $default(_that.historyStatus,_that.latestStatus,_that.allLaunches,_that.f
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( SpaceXStatus historyStatus,  SpaceXStatus latestStatus,  List<Launch> allLaunches,  List<Launch> filteredLaunches,  Launch? latestLaunch,  String searchQuery,  String? errorMessage)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<Launch> allLaunches,  List<Launch> filteredLaunches,  Launch? latestLaunch,  String searchQuery,  String? errorMessage)  $default,) {final _that = this;
 switch (_that) {
 case _SpaceXState():
-return $default(_that.historyStatus,_that.latestStatus,_that.allLaunches,_that.filteredLaunches,_that.latestLaunch,_that.searchQuery,_that.errorMessage);}
+return $default(_that.allLaunches,_that.filteredLaunches,_that.latestLaunch,_that.searchQuery,_that.errorMessage);}
 }
 /// A variant of `when` that fallback to returning `null`
 ///
@@ -203,10 +201,10 @@ return $default(_that.historyStatus,_that.latestStatus,_that.allLaunches,_that.f
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( SpaceXStatus historyStatus,  SpaceXStatus latestStatus,  List<Launch> allLaunches,  List<Launch> filteredLaunches,  Launch? latestLaunch,  String searchQuery,  String? errorMessage)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<Launch> allLaunches,  List<Launch> filteredLaunches,  Launch? latestLaunch,  String searchQuery,  String? errorMessage)?  $default,) {final _that = this;
 switch (_that) {
 case _SpaceXState() when $default != null:
-return $default(_that.historyStatus,_that.latestStatus,_that.allLaunches,_that.filteredLaunches,_that.latestLaunch,_that.searchQuery,_that.errorMessage);case _:
+return $default(_that.allLaunches,_that.filteredLaunches,_that.latestLaunch,_that.searchQuery,_that.errorMessage);case _:
   return null;
 
 }
@@ -218,11 +216,9 @@ return $default(_that.historyStatus,_that.latestStatus,_that.allLaunches,_that.f
 
 
 class _SpaceXState implements SpaceXState {
-  const _SpaceXState({this.historyStatus = SpaceXStatus.initial, this.latestStatus = SpaceXStatus.initial, final  List<Launch> allLaunches = const [], final  List<Launch> filteredLaunches = const [], this.latestLaunch, this.searchQuery = '', this.errorMessage}): _allLaunches = allLaunches,_filteredLaunches = filteredLaunches;
+  const _SpaceXState({final  List<Launch> allLaunches = const [], final  List<Launch> filteredLaunches = const [], this.latestLaunch, this.searchQuery = '', this.errorMessage}): _allLaunches = allLaunches,_filteredLaunches = filteredLaunches;
   
 
-@override@JsonKey() final  SpaceXStatus historyStatus;
-@override@JsonKey() final  SpaceXStatus latestStatus;
  final  List<Launch> _allLaunches;
 @override@JsonKey() List<Launch> get allLaunches {
   if (_allLaunches is EqualUnmodifiableListView) return _allLaunches;
@@ -251,16 +247,16 @@ _$SpaceXStateCopyWith<_SpaceXState> get copyWith => __$SpaceXStateCopyWithImpl<_
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SpaceXState&&(identical(other.historyStatus, historyStatus) || other.historyStatus == historyStatus)&&(identical(other.latestStatus, latestStatus) || other.latestStatus == latestStatus)&&const DeepCollectionEquality().equals(other._allLaunches, _allLaunches)&&const DeepCollectionEquality().equals(other._filteredLaunches, _filteredLaunches)&&(identical(other.latestLaunch, latestLaunch) || other.latestLaunch == latestLaunch)&&(identical(other.searchQuery, searchQuery) || other.searchQuery == searchQuery)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _SpaceXState&&const DeepCollectionEquality().equals(other._allLaunches, _allLaunches)&&const DeepCollectionEquality().equals(other._filteredLaunches, _filteredLaunches)&&(identical(other.latestLaunch, latestLaunch) || other.latestLaunch == latestLaunch)&&(identical(other.searchQuery, searchQuery) || other.searchQuery == searchQuery)&&(identical(other.errorMessage, errorMessage) || other.errorMessage == errorMessage));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,historyStatus,latestStatus,const DeepCollectionEquality().hash(_allLaunches),const DeepCollectionEquality().hash(_filteredLaunches),latestLaunch,searchQuery,errorMessage);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_allLaunches),const DeepCollectionEquality().hash(_filteredLaunches),latestLaunch,searchQuery,errorMessage);
 
 @override
 String toString() {
-  return 'SpaceXState(historyStatus: $historyStatus, latestStatus: $latestStatus, allLaunches: $allLaunches, filteredLaunches: $filteredLaunches, latestLaunch: $latestLaunch, searchQuery: $searchQuery, errorMessage: $errorMessage)';
+  return 'SpaceXState(allLaunches: $allLaunches, filteredLaunches: $filteredLaunches, latestLaunch: $latestLaunch, searchQuery: $searchQuery, errorMessage: $errorMessage)';
 }
 
 
@@ -271,7 +267,7 @@ abstract mixin class _$SpaceXStateCopyWith<$Res> implements $SpaceXStateCopyWith
   factory _$SpaceXStateCopyWith(_SpaceXState value, $Res Function(_SpaceXState) _then) = __$SpaceXStateCopyWithImpl;
 @override @useResult
 $Res call({
- SpaceXStatus historyStatus, SpaceXStatus latestStatus, List<Launch> allLaunches, List<Launch> filteredLaunches, Launch? latestLaunch, String searchQuery, String? errorMessage
+ List<Launch> allLaunches, List<Launch> filteredLaunches, Launch? latestLaunch, String searchQuery, String? errorMessage
 });
 
 
@@ -288,11 +284,9 @@ class __$SpaceXStateCopyWithImpl<$Res>
 
 /// Create a copy of SpaceXState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? historyStatus = null,Object? latestStatus = null,Object? allLaunches = null,Object? filteredLaunches = null,Object? latestLaunch = freezed,Object? searchQuery = null,Object? errorMessage = freezed,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? allLaunches = null,Object? filteredLaunches = null,Object? latestLaunch = freezed,Object? searchQuery = null,Object? errorMessage = freezed,}) {
   return _then(_SpaceXState(
-historyStatus: null == historyStatus ? _self.historyStatus : historyStatus // ignore: cast_nullable_to_non_nullable
-as SpaceXStatus,latestStatus: null == latestStatus ? _self.latestStatus : latestStatus // ignore: cast_nullable_to_non_nullable
-as SpaceXStatus,allLaunches: null == allLaunches ? _self._allLaunches : allLaunches // ignore: cast_nullable_to_non_nullable
+allLaunches: null == allLaunches ? _self._allLaunches : allLaunches // ignore: cast_nullable_to_non_nullable
 as List<Launch>,filteredLaunches: null == filteredLaunches ? _self._filteredLaunches : filteredLaunches // ignore: cast_nullable_to_non_nullable
 as List<Launch>,latestLaunch: freezed == latestLaunch ? _self.latestLaunch : latestLaunch // ignore: cast_nullable_to_non_nullable
 as Launch?,searchQuery: null == searchQuery ? _self.searchQuery : searchQuery // ignore: cast_nullable_to_non_nullable

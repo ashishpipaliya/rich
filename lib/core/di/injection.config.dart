@@ -49,14 +49,18 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i423.SpaceXRepository>(
       () => _i80.SpaceXRepositoryImpl(gh<_i690.SpaceXRemoteDataSource>()),
     );
-    gh.factory<_i842.SpaceXBloc>(
-      () => _i842.SpaceXBloc(gh<_i423.SpaceXRepository>()),
-    );
     gh.factory<_i47.GetLatestLaunchUseCase>(
       () => _i47.GetLatestLaunchUseCase(gh<_i423.SpaceXRepository>()),
     );
     gh.factory<_i47.GetLaunchHistoryUseCase>(
       () => _i47.GetLaunchHistoryUseCase(gh<_i423.SpaceXRepository>()),
+    );
+    gh.factory<_i842.SpaceXBloc>(
+      () => _i842.SpaceXBloc(
+        gh<_i423.SpaceXRepository>(),
+        gh<InvalidType>(),
+        gh<InvalidType>(),
+      ),
     );
     return this;
   }
