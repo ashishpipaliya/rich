@@ -15,24 +15,17 @@ This layer is responsible for the UI and state management.
 - **Bloc/Providers**: Handles business logic and UI state transitions.
 - **Pages/Widgets**: Pure UI components that listen to state changes.
 
-### 2. Domain Layer
-Located in `lib/features/[feature_name]/domain/`.
-The heart of the application. It contains the "What" of the application logic but not the "How".
-- **Entities**: Simple data classes that represent the business objects.
-- **Repositories (Abstract)**: Interfaces that define what data operations are possible without knowing the underlying implementation (API, Database, etc.).
-- **UseCases (Optional)**: Specific business logic rules that coordinate data flow.
-
-### 3. Data Layer
+### 2. Data Layer
 Located in `lib/features/[feature_name]/data/`.
 This layer handles the "How" of data retrieval.
 - **Models**: Data transfer objects (DTOs) that represent the JSON structure of an API. In this project, we utilize a Unified Model approach where Entities and Models coexist in a single class to reduce boilerplate while maintaining structure.
 - **Data Sources**: Low-level implementation of network calls (Retrofit/Dio) or local storage.
-- **Repositories (Implementation)**: Coordinates data from multiple sources and returns them to the Domain layer.
+- **Repositories (Implementation)**: Coordinates data from multiple sources and returns them to the Presentation layer.
 
 ## Pragmatic Implementation Implementation
 While strict Clean Architecture requires significant boilerplate (manual mapping between Models and Entities, mandatory UseCases for every action), this project adopts a **Pragmatic Clean Architecture** approach to accelerate development:
-- **Unified Schema**: Models use JSON annotations but reside in the domain/data intersection to avoid redundant mapping extensions.
-- **Simplified Flow**: UseCases are implemented only when complex business logic is required; otherwise, the Bloc interacts directly with the Repository interface.
+- **Unified Schema**: Models use JSON annotations and reside in the data layer to avoid redundant mapping extensions.
+- **Simplified Flow**: UseCases are omitted; the Bloc interacts directly with the Repository.
 
 ## Tech Stack
 - **State Management**: [flutter_bloc](https://pub.dev/packages/flutter_bloc)
