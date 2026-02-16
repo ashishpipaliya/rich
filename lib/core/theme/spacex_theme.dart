@@ -1,30 +1,67 @@
 import 'package:flutter/material.dart';
+import 'app_colors.dart';
 
-class SpaceXTheme {
-  static const Color brandColor = Color(0xFF6750A4);
+class SpaceXCardColors extends ThemeExtension<SpaceXCardColors> {
+  final List<Color> gradientColors;
+  final Color orbitalColor;
+  final Color reflectionColor;
+  final Color borderColor;
+  final Color contentColor;
 
-  // Custom Status Colors
-  static const Color successLight = Color(0xFF2E7D32);
-  static const Color errorLight = Color(0xFFD32F2F);
+  const SpaceXCardColors({
+    required this.gradientColors,
+    required this.orbitalColor,
+    required this.reflectionColor,
+    required this.borderColor,
+    required this.contentColor,
+  });
 
-  static const Color successDark = Color(0xFF81C784);
-  static const Color errorDark = Color(0xFFE57373);
-
-  /// Helper to get success color based on brightness
-  static Color getSuccessColor(BuildContext context) {
-    return Theme.of(context).brightness == Brightness.light ? successLight : successDark;
+  @override
+  SpaceXCardColors copyWith({List<Color>? gradientColors, Color? orbitalColor, Color? reflectionColor, Color? borderColor, Color? contentColor}) {
+    return SpaceXCardColors(
+      gradientColors: gradientColors ?? this.gradientColors,
+      orbitalColor: orbitalColor ?? this.orbitalColor,
+      reflectionColor: reflectionColor ?? this.reflectionColor,
+      borderColor: borderColor ?? this.borderColor,
+      contentColor: contentColor ?? this.contentColor,
+    );
   }
 
-  /// Helper to get error color based on brightness
+  @override
+  SpaceXCardColors lerp(ThemeExtension<SpaceXCardColors>? other, double t) {
+    if (other is! SpaceXCardColors) return this;
+    return SpaceXCardColors(
+      gradientColors: [
+        Color.lerp(gradientColors[0], other.gradientColors[0], t)!,
+        Color.lerp(gradientColors[1], other.gradientColors[1], t)!,
+        Color.lerp(gradientColors[2], other.gradientColors[2], t)!,
+      ],
+      orbitalColor: Color.lerp(orbitalColor, other.orbitalColor, t)!,
+      reflectionColor: Color.lerp(reflectionColor, other.reflectionColor, t)!,
+      borderColor: Color.lerp(borderColor, other.borderColor, t)!,
+      contentColor: Color.lerp(contentColor, other.contentColor, t)!,
+    );
+  }
+
+  static SpaceXCardColors of(BuildContext context) => Theme.of(context).extension<SpaceXCardColors>()!;
+}
+
+class SpaceXTheme {
+  /// Helper to get success color based on brightness
+  static Color getSuccessColor(BuildContext context) {
+    return Theme.of(context).brightness == Brightness.light ? AppColors.successLight : AppColors.successDark;
+  }
+
   static Color getErrorColor(BuildContext context) {
     return Theme.of(context).colorScheme.error;
   }
 
   static ThemeData get lightTheme {
+    final colorScheme = ColorScheme.fromSeed(seedColor: AppColors.brandPrimary, brightness: Brightness.light, error: AppColors.errorLight);
     return ThemeData(
       brightness: Brightness.light,
-      colorScheme: ColorScheme.fromSeed(seedColor: brandColor, brightness: Brightness.light, error: errorLight),
-      appBarTheme: const AppBarTheme(centerTitle: true, elevation: 0, scrolledUnderElevation: 2),
+      colorScheme: colorScheme,
+      appBarTheme: const AppBarTheme(scrolledUnderElevation: 0, surfaceTintColor: Colors.transparent, backgroundColor: Colors.transparent),
       cardTheme: const CardThemeData(
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -36,14 +73,28 @@ class SpaceXTheme {
         filled: true,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none),
       ),
+      extensions: [
+        SpaceXCardColors(
+          gradientColors: [
+            colorScheme.primaryContainer.withValues(alpha: 0.4),
+            colorScheme.surfaceContainerHighest.withValues(alpha: 0.6),
+            colorScheme.surface,
+          ],
+          orbitalColor: colorScheme.primary.withValues(alpha: 0.1),
+          reflectionColor: colorScheme.primary.withValues(alpha: 0.05),
+          borderColor: colorScheme.primary.withValues(alpha: 0.1),
+          contentColor: colorScheme.onSurface,
+        ),
+      ],
     );
   }
 
   static ThemeData get darkTheme {
+    final colorScheme = ColorScheme.fromSeed(seedColor: AppColors.brandPrimary, brightness: Brightness.dark, error: AppColors.errorDark);
     return ThemeData(
       brightness: Brightness.dark,
-      colorScheme: ColorScheme.fromSeed(seedColor: brandColor, brightness: Brightness.dark, error: errorDark),
-      appBarTheme: const AppBarTheme(centerTitle: true, elevation: 0, scrolledUnderElevation: 2),
+      colorScheme: colorScheme,
+      appBarTheme: const AppBarTheme(scrolledUnderElevation: 0, surfaceTintColor: Colors.transparent, backgroundColor: Colors.transparent),
       cardTheme: const CardThemeData(
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -55,6 +106,15 @@ class SpaceXTheme {
         filled: true,
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none),
       ),
+      extensions: const [
+        SpaceXCardColors(
+          gradientColors: AppColors.deepSpaceGradient,
+          orbitalColor: Color(0x336750A4),
+          reflectionColor: AppColors.glassWhite,
+          borderColor: AppColors.glassBorder,
+          contentColor: Colors.white,
+        ),
+      ],
     );
   }
 }

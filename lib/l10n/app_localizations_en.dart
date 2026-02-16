@@ -18,9 +18,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get initializingControl => 'Initializing Mission Control...';
 
   @override
-  String get loading => 'Loading...';
-
-  @override
   String telemetryError(String message) {
     return 'Telemetry Error: $message';
   }
@@ -41,9 +38,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get failure => 'Failure';
-
-  @override
-  String get retry => 'Retry Fetching';
 
   @override
   String get missionSummary => 'Mission Summary';
@@ -77,4 +71,24 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get latestLaunch => 'Latest Launch';
+
+  @override
+  String get missionAlpha => 'MISSION ALPHA';
+
+  @override
+  String get flight => 'FLIGHT';
+
+  @override
+  String get year => 'YEAR';
+
+  @override
+  String get leo => 'LEO';
+
+  @override
+  String missionId(String id) {
+    return 'Mission ID: $id';
+  }
+
+  @override
+  String get flightNumberLabel => 'Flight Number';
 }

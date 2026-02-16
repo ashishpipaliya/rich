@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
-import '../../domain/usecases/spacex_usecases.dart';
+import 'package:rich/features/spacex/domain/usecases/spacex_usecases.dart';
 import 'latest_launch_event.dart';
 import 'latest_launch_state.dart';
 

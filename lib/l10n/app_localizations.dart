@@ -112,12 +112,6 @@ abstract class AppLocalizations {
   /// **'Initializing Mission Control...'**
   String get initializingControl;
 
-  /// No description provided for @loading.
-  ///
-  /// In en, this message translates to:
-  /// **'Loading...'**
-  String get loading;
-
   /// No description provided for @telemetryError.
   ///
   /// In en, this message translates to:
@@ -153,12 +147,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Failure'**
   String get failure;
-
-  /// No description provided for @retry.
-  ///
-  /// In en, this message translates to:
-  /// **'Retry Fetching'**
-  String get retry;
 
   /// No description provided for @missionSummary.
   ///
@@ -219,6 +207,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Latest Launch'**
   String get latestLaunch;
+
+  /// No description provided for @missionAlpha.
+  ///
+  /// In en, this message translates to:
+  /// **'MISSION ALPHA'**
+  String get missionAlpha;
+
+  /// No description provided for @flight.
+  ///
+  /// In en, this message translates to:
+  /// **'FLIGHT'**
+  String get flight;
+
+  /// No description provided for @year.
+  ///
+  /// In en, this message translates to:
+  /// **'YEAR'**
+  String get year;
+
+  /// No description provided for @leo.
+  ///
+  /// In en, this message translates to:
+  /// **'LEO'**
+  String get leo;
+
+  /// No description provided for @missionId.
+  ///
+  /// In en, this message translates to:
+  /// **'Mission ID: {id}'**
+  String missionId(String id);
+
+  /// No description provided for @flightNumberLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Flight Number'**
+  String get flightNumberLabel;
 }
 
 class _AppLocalizationsDelegate

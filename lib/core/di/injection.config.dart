@@ -23,7 +23,10 @@ import '../../features/spacex/data/repositories/spacex_repository.dart'
 import '../../features/spacex/data/repositories/spacex_repository_impl.dart'
     as _i80;
 import '../../features/spacex/domain/usecases/spacex_usecases.dart' as _i47;
-import '../../features/spacex/presentation/bloc/spacex_bloc.dart' as _i842;
+import '../../features/spacex/presentation/bloc/history/history_bloc.dart'
+    as _i1040;
+import '../../features/spacex/presentation/bloc/latest_launch/latest_launch_bloc.dart'
+    as _i892;
 import '../../features/spacex/presentation/bloc/view_mode_cubit.dart' as _i483;
 import '../network/interceptors/header_interceptor.dart' as _i463;
 import 'register_module.dart' as _i291;
@@ -55,12 +58,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i47.GetLaunchHistoryUseCase>(
       () => _i47.GetLaunchHistoryUseCase(gh<_i423.SpaceXRepository>()),
     );
-    gh.factory<_i842.SpaceXBloc>(
-      () => _i842.SpaceXBloc(
-        gh<_i423.SpaceXRepository>(),
-        gh<InvalidType>(),
-        gh<InvalidType>(),
-      ),
+    gh.factory<_i892.LatestLaunchBloc>(
+      () => _i892.LatestLaunchBloc(gh<_i47.GetLatestLaunchUseCase>()),
+    );
+    gh.factory<_i1040.HistoryBloc>(
+      () => _i1040.HistoryBloc(gh<_i47.GetLaunchHistoryUseCase>()),
     );
     return this;
   }

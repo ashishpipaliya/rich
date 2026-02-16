@@ -16,9 +16,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Rich',
-      debugShowCheckedModeBanner: false,
-      theme: SpaceXTheme.darkTheme,
+      onGenerateTitle: (context) => AppLocalizations.of(context)!.appTitle,
+      theme: SpaceXTheme.lightTheme,
+      darkTheme: SpaceXTheme.darkTheme,
+      themeMode: ThemeMode.system,
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,

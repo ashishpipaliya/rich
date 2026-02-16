@@ -2,7 +2,6 @@
     "appTitle": "SpaceX Dashboard",
     "searchHint": "Search experimental missions...",
     "initializingControl": "Initializing Mission Control...",
-    "loading": "Loading...",
     "telemetryError": "Telemetry Error: {message}",
     "@telemetryError": {
         "placeholders": {
@@ -23,7 +22,6 @@
     },
     "success": "Success",
     "failure": "Failure",
-    "retry": "Retry Fetching",
     "missionSummary": "Mission Summary",
     "noDetails": "Historical records for this mission are classified or unavailable.",
     "launchDate": "Launch Date",
@@ -40,5 +38,18 @@
     },
     "reconnect": "Reconnect",
     "orbit": "ORBIT",
-    "latestLaunch": "Latest Launch"
+    "latestLaunch": "Latest Launch",
+    "missionAlpha": "MISSION ALPHA",
+    "flight": "FLIGHT",
+    "year": "YEAR",
+    "leo": "LEO",
+    "missionId": "Mission ID: {id}",
+    "@missionId": {
+        "placeholders": {
+            "id": {
+                "type": "String"
+            }
+        }
+    },
+    "flightNumberLabel": "Flight Number"
 }
