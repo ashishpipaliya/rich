@@ -125,7 +125,7 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( List<Launch> allLaunches,  List<Launch> filteredLaunches,  String searchQuery)?  loaded,TResult Function( String message)?  error,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( List<LaunchEntity> allLaunches,  List<LaunchEntity> filteredLaunches,  String searchQuery)?  loaded,TResult Function( String message)?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case HistoryInitial() when initial != null:
 return initial();case HistoryLoading() when loading != null:
@@ -149,7 +149,7 @@ return error(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( List<Launch> allLaunches,  List<Launch> filteredLaunches,  String searchQuery)  loaded,required TResult Function( String message)  error,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( List<LaunchEntity> allLaunches,  List<LaunchEntity> filteredLaunches,  String searchQuery)  loaded,required TResult Function( String message)  error,}) {final _that = this;
 switch (_that) {
 case HistoryInitial():
 return initial();case HistoryLoading():
@@ -169,7 +169,7 @@ return error(_that.message);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( List<Launch> allLaunches,  List<Launch> filteredLaunches,  String searchQuery)?  loaded,TResult? Function( String message)?  error,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( List<LaunchEntity> allLaunches,  List<LaunchEntity> filteredLaunches,  String searchQuery)?  loaded,TResult? Function( String message)?  error,}) {final _that = this;
 switch (_that) {
 case HistoryInitial() when initial != null:
 return initial();case HistoryLoading() when loading != null:
@@ -251,18 +251,18 @@ String toString() {
 
 
 class HistoryLoaded implements HistoryState {
-  const HistoryLoaded({required final  List<Launch> allLaunches, required final  List<Launch> filteredLaunches, this.searchQuery = ''}): _allLaunches = allLaunches,_filteredLaunches = filteredLaunches;
+  const HistoryLoaded({required final  List<LaunchEntity> allLaunches, required final  List<LaunchEntity> filteredLaunches, this.searchQuery = ''}): _allLaunches = allLaunches,_filteredLaunches = filteredLaunches;
   
 
- final  List<Launch> _allLaunches;
- List<Launch> get allLaunches {
+ final  List<LaunchEntity> _allLaunches;
+ List<LaunchEntity> get allLaunches {
   if (_allLaunches is EqualUnmodifiableListView) return _allLaunches;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_allLaunches);
 }
 
- final  List<Launch> _filteredLaunches;
- List<Launch> get filteredLaunches {
+ final  List<LaunchEntity> _filteredLaunches;
+ List<LaunchEntity> get filteredLaunches {
   if (_filteredLaunches is EqualUnmodifiableListView) return _filteredLaunches;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableListView(_filteredLaunches);
@@ -300,7 +300,7 @@ abstract mixin class $HistoryLoadedCopyWith<$Res> implements $HistoryStateCopyWi
   factory $HistoryLoadedCopyWith(HistoryLoaded value, $Res Function(HistoryLoaded) _then) = _$HistoryLoadedCopyWithImpl;
 @useResult
 $Res call({
- List<Launch> allLaunches, List<Launch> filteredLaunches, String searchQuery
+ List<LaunchEntity> allLaunches, List<LaunchEntity> filteredLaunches, String searchQuery
 });
 
 
@@ -320,8 +320,8 @@ class _$HistoryLoadedCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') $Res call({Object? allLaunches = null,Object? filteredLaunches = null,Object? searchQuery = null,}) {
   return _then(HistoryLoaded(
 allLaunches: null == allLaunches ? _self._allLaunches : allLaunches // ignore: cast_nullable_to_non_nullable
-as List<Launch>,filteredLaunches: null == filteredLaunches ? _self._filteredLaunches : filteredLaunches // ignore: cast_nullable_to_non_nullable
-as List<Launch>,searchQuery: null == searchQuery ? _self.searchQuery : searchQuery // ignore: cast_nullable_to_non_nullable
+as List<LaunchEntity>,filteredLaunches: null == filteredLaunches ? _self._filteredLaunches : filteredLaunches // ignore: cast_nullable_to_non_nullable
+as List<LaunchEntity>,searchQuery: null == searchQuery ? _self.searchQuery : searchQuery // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

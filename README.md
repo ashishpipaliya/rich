@@ -22,7 +22,7 @@ This layer handles the "How" of data retrieval.
 - **Data Sources**: Low-level implementation of network calls (Retrofit/Dio) or local storage.
 - **Repositories (Implementation)**: Coordinates data from multiple sources and returns them to the Presentation layer.
 
-## Pragmatic Implementation Implementation
+## Pragmatic Implementation
 While strict Clean Architecture requires significant boilerplate (manual mapping between Models and Entities, mandatory UseCases for every action), this project adopts a **Pragmatic Clean Architecture** approach to accelerate development:
 - **Unified Schema**: Models use JSON annotations and reside in the data layer to avoid redundant mapping extensions.
 - **Simplified Flow**: UseCases are omitted; the Bloc interacts directly with the Repository.

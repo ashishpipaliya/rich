@@ -125,7 +125,7 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( Launch launch)?  loaded,TResult Function( String message)?  error,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( LaunchEntity launch)?  loaded,TResult Function( String message)?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case LatestLaunchInitial() when initial != null:
 return initial();case LatestLaunchLoading() when loading != null:
@@ -149,7 +149,7 @@ return error(_that.message);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( Launch launch)  loaded,required TResult Function( String message)  error,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( LaunchEntity launch)  loaded,required TResult Function( String message)  error,}) {final _that = this;
 switch (_that) {
 case LatestLaunchInitial():
 return initial();case LatestLaunchLoading():
@@ -169,7 +169,7 @@ return error(_that.message);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( Launch launch)?  loaded,TResult? Function( String message)?  error,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( LaunchEntity launch)?  loaded,TResult? Function( String message)?  error,}) {final _that = this;
 switch (_that) {
 case LatestLaunchInitial() when initial != null:
 return initial();case LatestLaunchLoading() when loading != null:
@@ -254,7 +254,7 @@ class LatestLaunchLoaded implements LatestLaunchState {
   const LatestLaunchLoaded(this.launch);
   
 
- final  Launch launch;
+ final  LaunchEntity launch;
 
 /// Create a copy of LatestLaunchState
 /// with the given fields replaced by the non-null parameter values.
@@ -286,11 +286,11 @@ abstract mixin class $LatestLaunchLoadedCopyWith<$Res> implements $LatestLaunchS
   factory $LatestLaunchLoadedCopyWith(LatestLaunchLoaded value, $Res Function(LatestLaunchLoaded) _then) = _$LatestLaunchLoadedCopyWithImpl;
 @useResult
 $Res call({
- Launch launch
+ LaunchEntity launch
 });
 
 
-$LaunchCopyWith<$Res> get launch;
+
 
 }
 /// @nodoc
@@ -306,20 +306,11 @@ class _$LatestLaunchLoadedCopyWithImpl<$Res>
 @pragma('vm:prefer-inline') $Res call({Object? launch = null,}) {
   return _then(LatestLaunchLoaded(
 null == launch ? _self.launch : launch // ignore: cast_nullable_to_non_nullable
-as Launch,
+as LaunchEntity,
   ));
 }
 
-/// Create a copy of LatestLaunchState
-/// with the given fields replaced by the non-null parameter values.
-@override
-@pragma('vm:prefer-inline')
-$LaunchCopyWith<$Res> get launch {
-  
-  return $LaunchCopyWith<$Res>(_self.launch, (value) {
-    return _then(_self.copyWith(launch: value));
-  });
-}
+
 }
 
 /// @nodoc

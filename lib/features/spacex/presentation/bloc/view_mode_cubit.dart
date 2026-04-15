@@ -8,6 +8,8 @@ class ViewModeCubit extends Cubit<SpaceXViewMode> {
   ViewModeCubit() : super(SpaceXViewMode.list);
 
   void toggle() {
-    emit(state == SpaceXViewMode.list ? SpaceXViewMode.grid : SpaceXViewMode.list);
+    emit(
+      state == SpaceXViewMode.list ? SpaceXViewMode.grid : SpaceXViewMode.list,
+    );
   }
 }

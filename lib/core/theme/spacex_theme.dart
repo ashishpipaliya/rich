@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'app_colors.dart';
 
+// ─── SpaceX Card Theme Extension ─────────────────────────────────────────────
+
 class SpaceXCardColors extends ThemeExtension<SpaceXCardColors> {
   final List<Color> gradientColors;
   final Color orbitalColor;
@@ -17,7 +19,13 @@ class SpaceXCardColors extends ThemeExtension<SpaceXCardColors> {
   });
 
   @override
-  SpaceXCardColors copyWith({List<Color>? gradientColors, Color? orbitalColor, Color? reflectionColor, Color? borderColor, Color? contentColor}) {
+  SpaceXCardColors copyWith({
+    List<Color>? gradientColors,
+    Color? orbitalColor,
+    Color? reflectionColor,
+    Color? borderColor,
+    Color? contentColor,
+  }) {
     return SpaceXCardColors(
       gradientColors: gradientColors ?? this.gradientColors,
       orbitalColor: orbitalColor ?? this.orbitalColor,
@@ -43,13 +51,16 @@ class SpaceXCardColors extends ThemeExtension<SpaceXCardColors> {
     );
   }
 
-  static SpaceXCardColors of(BuildContext context) => Theme.of(context).extension<SpaceXCardColors>()!;
+  static SpaceXCardColors of(BuildContext context) =>
+      Theme.of(context).extension<SpaceXCardColors>()!;
 }
 
 class SpaceXTheme {
   /// Helper to get success color based on brightness
   static Color getSuccessColor(BuildContext context) {
-    return Theme.of(context).brightness == Brightness.light ? AppColors.successLight : AppColors.successDark;
+    return Theme.of(context).brightness == Brightness.light
+        ? AppColors.successLight
+        : AppColors.successDark;
   }
 
   static Color getErrorColor(BuildContext context) {
@@ -57,11 +68,19 @@ class SpaceXTheme {
   }
 
   static ThemeData get lightTheme {
-    final colorScheme = ColorScheme.fromSeed(seedColor: AppColors.brandPrimary, brightness: Brightness.light, error: AppColors.errorLight);
+    final colorScheme = ColorScheme.fromSeed(
+      seedColor: AppColors.brandPrimary,
+      brightness: Brightness.light,
+      error: AppColors.errorLight,
+    );
     return ThemeData(
       brightness: Brightness.light,
       colorScheme: colorScheme,
-      appBarTheme: const AppBarTheme(scrolledUnderElevation: 0, surfaceTintColor: Colors.transparent, backgroundColor: Colors.transparent),
+      appBarTheme: const AppBarTheme(
+        scrolledUnderElevation: 0,
+        surfaceTintColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
+      ),
       cardTheme: const CardThemeData(
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -71,9 +90,13 @@ class SpaceXTheme {
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide.none,
+        ),
       ),
       extensions: [
+        const DashboardTheme(),
         SpaceXCardColors(
           gradientColors: [
             colorScheme.primaryContainer.withValues(alpha: 0.4),
@@ -90,11 +113,19 @@ class SpaceXTheme {
   }
 
   static ThemeData get darkTheme {
-    final colorScheme = ColorScheme.fromSeed(seedColor: AppColors.brandPrimary, brightness: Brightness.dark, error: AppColors.errorDark);
+    final colorScheme = ColorScheme.fromSeed(
+      seedColor: AppColors.brandPrimary,
+      brightness: Brightness.dark,
+      error: AppColors.errorDark,
+    );
     return ThemeData(
       brightness: Brightness.dark,
       colorScheme: colorScheme,
-      appBarTheme: const AppBarTheme(scrolledUnderElevation: 0, surfaceTintColor: Colors.transparent, backgroundColor: Colors.transparent),
+      appBarTheme: const AppBarTheme(
+        scrolledUnderElevation: 0,
+        surfaceTintColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
+      ),
       cardTheme: const CardThemeData(
         elevation: 0,
         shape: RoundedRectangleBorder(
@@ -104,9 +135,13 @@ class SpaceXTheme {
       ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(16), borderSide: BorderSide.none),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(16),
+          borderSide: BorderSide.none,
+        ),
       ),
       extensions: const [
+        DashboardTheme(),
         SpaceXCardColors(
           gradientColors: AppColors.deepSpaceGradient,
           orbitalColor: Color(0x336750A4),
@@ -117,4 +152,50 @@ class SpaceXTheme {
       ],
     );
   }
+}
+
+// ─── Dashboard Theme Extension ───────────────────────────────────────────────
+// Provides gradient helpers consumed by dashboard widgets via Theme.of(context).
+
+class DashboardTheme extends ThemeExtension<DashboardTheme> {
+  const DashboardTheme();
+
+  static const LinearGradient headerGradient = LinearGradient(
+    colors: [DashboardColors.headerGradTop, DashboardColors.appBarBg],
+    begin: Alignment.topCenter,
+    end: Alignment.bottomCenter,
+  );
+
+  static const LinearGradient bannerGradient = LinearGradient(
+    colors: [DashboardColors.bannerLeft, DashboardColors.bannerMid, DashboardColors.bannerLeft],
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+  );
+
+  static LinearGradient bannerLeftVignette = LinearGradient(
+    colors: [DashboardColors.bannerVignette, Colors.transparent],
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+  );
+
+  static LinearGradient bannerRightVignette = LinearGradient(
+    colors: [Colors.transparent, DashboardColors.bannerVignette],
+    begin: Alignment.centerLeft,
+    end: Alignment.centerRight,
+  );
+
+  static LinearGradient promoCardGradient(Color base) => LinearGradient(
+    colors: [base.withValues(alpha: 0.9), base.withValues(alpha: 0.3)],
+    begin: Alignment.topLeft,
+    end: Alignment.bottomRight,
+  );
+
+  @override
+  DashboardTheme copyWith() => const DashboardTheme();
+
+  @override
+  DashboardTheme lerp(ThemeExtension<DashboardTheme>? other, double t) => this;
+
+  static DashboardTheme of(BuildContext context) =>
+      Theme.of(context).extension<DashboardTheme>() ?? const DashboardTheme();
 }

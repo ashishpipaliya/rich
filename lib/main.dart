@@ -2,11 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:rich/core/di/injection.dart';
 import 'package:rich/core/theme/spacex_theme.dart';
-import 'package:rich/features/spacex/presentation/pages/spacex_page.dart';
+import 'package:rich/features/dashboard/presentation/pages/dashboard_page.dart';
 import 'package:rich/l10n/app_localizations.dart';
 
-void main() {
-  configureDependencies();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await configureDependencies();
   runApp(const MyApp());
 }
 
@@ -19,7 +20,8 @@ class MyApp extends StatelessWidget {
       onGenerateTitle: (context) => AppLocalizations.of(context)!.appTitle,
       theme: SpaceXTheme.lightTheme,
       darkTheme: SpaceXTheme.darkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: ThemeMode.dark,
+      debugShowCheckedModeBanner: false,
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -27,7 +29,7 @@ class MyApp extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: const [Locale('en')],
-      home: const SpaceXPage(),
+      home: const DashboardPage(),
     );
   }
 }

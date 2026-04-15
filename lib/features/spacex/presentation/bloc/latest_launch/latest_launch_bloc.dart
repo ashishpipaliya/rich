@@ -8,13 +8,20 @@ import 'latest_launch_state.dart';
 class LatestLaunchBloc extends Bloc<LatestLaunchEvent, LatestLaunchState> {
   final GetLatestLaunchUseCase _getLatestLaunch;
 
-  LatestLaunchBloc(this._getLatestLaunch) : super(const LatestLaunchState.initial()) {
+  LatestLaunchBloc(this._getLatestLaunch)
+    : super(const LatestLaunchState.initial()) {
     on<FetchLatest>(_onFetch);
   }
 
-  Future<void> _onFetch(FetchLatest event, Emitter<LatestLaunchState> emit) async {
+  Future<void> _onFetch(
+    FetchLatest event,
+    Emitter<LatestLaunchState> emit,
+  ) async {
     emit(const LatestLaunchState.loading());
     final result = await _getLatestLaunch();
-    result.fold((failure) => emit(LatestLaunchState.error(failure.message)), (launch) => emit(LatestLaunchState.loaded(launch)));
+    result.fold(
+      (failure) => emit(LatestLaunchState.error(failure.message)),
+      (launch) => emit(LatestLaunchState.loaded(launch)),
+    );
   }
 }

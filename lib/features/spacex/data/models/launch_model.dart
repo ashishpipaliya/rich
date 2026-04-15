@@ -20,14 +20,20 @@ abstract class Launch with _$Launch {
 
 @freezed
 abstract class LaunchLinks with _$LaunchLinks {
-  const factory LaunchLinks({required LaunchPatch patch, @JsonKey(name: 'youtube_id') String? youtubeId, String? wikipedia}) = _LaunchLinks;
+  const factory LaunchLinks({
+    required LaunchPatch patch,
+    @JsonKey(name: 'youtube_id') String? youtubeId,
+    String? wikipedia,
+  }) = _LaunchLinks;
 
-  factory LaunchLinks.fromJson(Map<String, dynamic> json) => _$LaunchLinksFromJson(json);
+  factory LaunchLinks.fromJson(Map<String, dynamic> json) =>
+      _$LaunchLinksFromJson(json);
 }
 
 @freezed
 abstract class LaunchPatch with _$LaunchPatch {
   const factory LaunchPatch({String? small, String? large}) = _LaunchPatch;
 
-  factory LaunchPatch.fromJson(Map<String, dynamic> json) => _$LaunchPatchFromJson(json);
+  factory LaunchPatch.fromJson(Map<String, dynamic> json) =>
+      _$LaunchPatchFromJson(json);
 }
